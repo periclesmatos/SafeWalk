@@ -19,8 +19,6 @@ SafeWalk é um MVP funcional (Produto Viável Mínimo) projetado para ajudar usu
 - ✅ **Persistência de Dados** - AsyncStorage para funcionalidade offline-first
 - ✅ **Visualização em Mapa** - Ver alertas com cálculos de distância
 
----
-
 ## 🚀 Início Rápido
 
 ### Pré-requisitos
@@ -56,8 +54,6 @@ npx jest --watch
 # Com relatório de cobertura
 npx jest --coverage
 ```
-
----
 
 ## 📂 Estrutura do Projeto
 
@@ -105,8 +101,6 @@ SafewalkApp/
 └── package.json                 # Dependências e scripts
 ```
 
----
-
 ## 🛠️ Stack Tecnológico
 
 | Categoria                | Tecnologia                 | Versão   | Propósito                      |
@@ -119,8 +113,6 @@ SafewalkApp/
 | **Localização**          | expo-location              | 55.1.4   | Rastreamento GPS               |
 | **Testes**               | Jest + Babel               | 30.2.0   | Testes unitários               |
 | **UI**                   | NativeWind                 | 4.2.3    | Tailwind CSS para React Native |
-
----
 
 ## 🧪 Testes
 
@@ -150,8 +142,6 @@ Tests:       26 passed, 26 total ✅
 Snapshots:   0 total
 Time:        1.654 s
 ```
-
----
 
 ## 🔑 Recursos Principais
 
@@ -183,8 +173,6 @@ Precisão: ~5-10m (ACCESS_FINE_LOCATION)
 Fallback: Localização aproximada se indisponível
 ```
 
----
-
 ## 📦 Compilação para Produção
 
 ### Validar Antes da Compilação
@@ -209,8 +197,6 @@ npm run build:android:production
 - Conta Expo: `eas login`
 - Tempo de compilação: ~10-15 minutos
 
----
-
 ## 🔐 Permissões Android
 
 Todas as permissões declaradas em `app.json`:
@@ -224,8 +210,6 @@ Todas as permissões declaradas em `app.json`:
   "ACCESS_NETWORK_STATE": "Status de rede"
 }
 ```
-
----
 
 ## 📝 Scripts Disponíveis
 
@@ -249,8 +233,6 @@ npm run build:android:production    # Build production APK
 npm run build:status                # Verificar status de compilação
 npm run build:list                  # Listar compilações anteriores
 ```
-
----
 
 ## 🤝 Contribuição
 
