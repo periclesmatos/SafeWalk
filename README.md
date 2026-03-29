@@ -213,13 +213,6 @@ npm run build:android:production
 
 ---
 
-## 📋 Documentação
-
-- **[REQUISITOS.md](REQUISITOS.md)** - Especificações completas (Requisitos Funcionais & Não-Funcionais)
-- **[RELATORIO_TECNICO.md](RELATORIO_TECNICO.md)** - Relatório técnico (Arquitetura, implementação, testes)
-
----
-
 ## 🔐 Permissões Android
 
 Todas as permissões declaradas em `app.json`:
