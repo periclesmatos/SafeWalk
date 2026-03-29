@@ -1,6 +1,4 @@
-import React, { createContext, useState, ReactNode, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { logService } from '../services/logService';
+import React, { createContext, useState, ReactNode } from 'react';
 
 interface Contact {
   name: string;
@@ -28,15 +26,9 @@ interface AlertContextType {
   addToHistory: (alert: AlertHistory) => void;
   isGpsConnected: boolean;
   setIsGpsConnected: (connected: boolean) => void;
-  isLoading: boolean;
 }
 
 export const AlertContext = createContext<AlertContextType | undefined>(undefined);
-
-const STORAGE_KEYS = {
-  CONTACT: '@safewalk_contact',
-  HISTORY: '@safewalk_history',
-};
 
 export const AlertProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [contact, setContactState] = useState<Contact>({
@@ -49,52 +41,16 @@ export const AlertProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [lastAlertCoords, setLastAlertCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [alertHistory, setAlertHistoryState] = useState<AlertHistory[]>([]);
   const [isGpsConnected, setIsGpsConnected] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
-  // Carrega dados do AsyncStorage ao inicializar
-  useEffect(() => {
-    const loadStorageData = async () => {
-      try {
-        const [storedContact, storedHistory] = await Promise.all([
-          AsyncStorage.getItem(STORAGE_KEYS.CONTACT),
-          AsyncStorage.getItem(STORAGE_KEYS.HISTORY),
-        ]);
-
-        if (storedContact) {
-          setContactState(JSON.parse(storedContact));
-        }
-        if (storedHistory) {
-          setAlertHistoryState(JSON.parse(storedHistory));
-        }
-      } catch (error) {
-        logService.error('AlertContext', 'Erro ao carregar dados do AsyncStorage', { error });
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadStorageData();
-  }, []);
-
-  // Persiste contato quando muda
-  const setContact = async (newContact: Contact) => {
+  // Atualiza contato sem persistência
+  const setContact = (newContact: Contact) => {
     setContactState(newContact);
-    try {
-      await AsyncStorage.setItem(STORAGE_KEYS.CONTACT, JSON.stringify(newContact));
-    } catch (error) {
-      logService.error('AlertContext', 'Erro ao salvar contato', { error });
-    }
   };
 
-  // Persiste histórico quando muda
-  const addToHistory = async (alert: AlertHistory) => {
+  // Adiciona ao histórico sem persistência (máx 50 itens)
+  const addToHistory = (alert: AlertHistory) => {
     const newHistory = [alert, ...alertHistory].slice(0, 50);
     setAlertHistoryState(newHistory);
-    try {
-      await AsyncStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(newHistory));
-    } catch (error) {
-      logService.error('AlertContext', 'Erro ao salvar histórico', { error });
-    }
   };
 
   return (
@@ -110,7 +66,6 @@ export const AlertProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         addToHistory,
         isGpsConnected,
         setIsGpsConnected,
-        isLoading,
       }}
     >
       {children}

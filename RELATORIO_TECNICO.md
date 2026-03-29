@@ -688,7 +688,7 @@ npx expo start
 
 ---
 
-**Documento Preparado por:** [Nome da Equipe]  
+**Documento Preparado por:** Francisco Péricles de Matos
 **Data:** 29 de Março de 2026  
 **Versão:** 1.0  
 **Status:** FINALIZADO ✅
