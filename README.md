@@ -7,8 +7,6 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-%23007ACC.svg?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![Tests](https://img.shields.io/badge/Testes-26%20Aprovados-green?style=flat-square&logo=jest)](./src/services/__tests__)
 
----
-
 ## 📱 Visão Geral
 
 SafeWalk é um MVP funcional (Produto Viável Mínimo) projetado para ajudar usuários a permanecer seguros por:
